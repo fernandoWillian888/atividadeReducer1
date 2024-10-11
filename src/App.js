@@ -1,25 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import redux from "react-redux"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const trocarTema = (tema) => {
+  return {
+    type: "TROCAR_TEMA",
+    payload: tema
+  };
+};
+
+const tarefasReducer = (state = [], action) => {
+  switch(action.type){
+    case "TROCAR_TEMA":
+      return [...state, action.payload];
+    default:
+      return state;
+  }
+};
+
+const store = createStore(tarefasReducer)
 
 export default App;
